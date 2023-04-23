@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+skin rose
+
+class Libro {
+    - titulo: String
+    - autor: String
+    - categoria: String
+    - isbn: String
+    + Libro(titulo:String, autor:String, categoria: String)
+    + getTitulo():String
+    + getAutor():String
+    + getCategoria():String
+}
+class Socio {
+    - nombre: String
+    - apellido: String
+    - correoElectronico: String
+    - numeroDeSocio: int
+    - contrasenia: String
+    - librosEnPrestamo: Libro[]
+    + Socio()
+    + getNombre(): String
+    + getNumeroDeSocio(): int
+}
+class Sistema {
+    - socios: Socio[]
+    - libros: Libro[]
+    - socio: Socio
+    + Sistema()
+    + iniciarSession():void
+    + cerrarSession(): void
+    + realizarPrestamoLibro(): void
+    + obtenerCatalogoLibros(): String
+}
+
+Sistema -- Libro: tiene >
+Sistema -- Socio
+
+
+@enduml
